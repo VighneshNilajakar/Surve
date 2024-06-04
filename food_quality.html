@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SURVE - Check Food Quality</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<style>
+		/* Reset some default styles */
+		body, h1, h2, h3, p, ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		/* Basic styles */
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			background-color: #222;
+			color: #fff;
+		}
+
+		header {
+			background-color: #333;
+			padding: 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo a {
+			color: #fff;
+			text-decoration: none;
+			font-size: 24px;
+			font-weight: bold;
+		}
+
+		nav {
+			background-color: #555;
+			padding: 10px;
+		}
+
+		nav ul {
+			list-style-type: none;
+			display: flex;
+			justify-content: center;
+		}
+
+		nav ul li {
+			margin-right: 20px;
+		}
+
+		nav ul li a {
+			color: #fff;
+			text-decoration: none;
+			padding: 5px 10px;
+			border-radius: 5px;
+			transition: background-color 0.3s ease;
+		}
+
+		nav ul li a:hover {
+			background-color: #fff;
+			color: #333;
+		}
+
+		section {
+			padding: 20px;
+		}
+
+		.box1 {
+			background-color: #444;
+			padding: 20px;
+			margin-bottom: 20px;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+			text-align: center;
+		}
+
+		/* Responsive food types grid */
+		#food-types {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 20px;
+			padding: 20px;
+		}
+
+		.food-type {
+			flex: 1 1 300px; /* Adjust max-width as needed */
+			background-color: #444;
+			padding: 20px;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+
+			transition: transform 0.3s ease;
+		}
+
+		.food-type:hover {
+			transform: translateY(-5px);
+		}
+
+		.food-type img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 5px;
+			display: block;
+			margin: 0 auto;
+		}
+
+		/* Terms and Conditions box */
+		#terms-conditions {
+			padding: 20px;
+			background-color: #444;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+			margin: 20px;
+		}
+
+		/* Styling for the Terms and Conditions section */
+		#terms-conditions .container {
+			display: flex; /* Use flexbox for better layout */
+			gap: 20px;   /* Add space between the columns */
+		}
+
+		#terms-conditions .column {
+			width: 50%; /* Split the container into two equal columns */
+		}
+
+		#terms-conditions h2 {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		#terms-conditions ul {
+			list-style-type: disc;
+			padding-left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<!-- Header -->
+	<header>
+		<div class="logo"><a href="index.html">SURVE</a></div>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="donation_centers.html">Donation Centers</a></li>
+				<li><a href="food_quality.html">Check Food Quality</a></li>
+				<li><a href="contact.html">Contact Us</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Food Types -->
+	<section>
+		<div class="box1">
+			<h2>CHECK FOOD QUALITY</h2>
+			<p>Analyze the Quality of Food based on the criterias described</p>
+		</div>
+
+		<div id="food-types">
+			<div class="food-type">
+				<img src="images/raw_food.jpg" alt="Raw Food" />
+				<br>
+				<h3>Raw Food</h3>
+				<p>1. For Raw food item- <br> a) More than 2 days- 2 points <br> b) 1-2 days - 3 points <br> c) 1 or less than 1 day- 4 points</p>
+			</div>
+			<div class="food-type">
+				<img src="images/processed_food.jpeg" alt="Processed Food" />
+				<br>
+				<h3>Processed Food</h3>
+				<p>2. Processed Food item- <br> a) More than 2 days- 0 <br> b) 1-2 days- 2 points <br> c) 1 or less than 1 day- 3 points</p>
+			</div>
+			<div class="food-type">
+				<img src="images/canned_food.jpeg" alt="Canned Food" />
+				<br>
+				<h3>Canned/Tetrapacked Food</h3>
+				<p>3. For Canned/Tetrapacked food <br> a) 10-12 months- 2 points <br> b) 5-10 months- 3 points <br> c) 2-3 weeks- 4 points <br> d) less than 2 weeks - 5 points</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Terms and Conditions -->
+	<section>
+		<div id="terms-conditions">
+			<header>
+				<h2>Terms and Conditions</h2>
+			</header>
+			<br>
+			<div class="container">
+				<div class="column">
+					<h3>Accepted:</h3>
+					<ul>
+						<li>Short coded product</li>
+						<li>Excess product</li>
+						<li>Product not meeting retailer specification</li>
+						<li>Discontinued product</li>
+						<li>Product requiring relabelling</li>
+						<li>Under or over weight product</li>
+						<li>Private label product</li>
+						<li>New product lines or promotions which didn't take off</li>
+						<li>Product withdrawals if they're still fit for use</li>
+					</ul>
+				</div>
+				<div class="column">
+					<h3>Not Accepted:</h3>
+					<ul>
+						<li>We won't accept</li>
+						<li>Regulated products such as alcohol, tobacco or drugs of dependence</li>
+						<li>Product past its use by date</li>
+						<li>Product more than 6 months past its best before date</li>
+						<li>Product where the packaging seal has been broken</li>
+						<li>Mouldy or rotting product</li>
+						<li>Product where the cold chain has not been maintained</li>
+						<li>Product subject to a safety recall</li>
+						<li>Unlabelled product provided without ingredient details</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
