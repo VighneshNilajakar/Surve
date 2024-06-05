@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SURVE - Donation Centers</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./food.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, h3, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #222;
+            color: #fff;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            background-color: #555;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #fff;
+            color: #333;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .box1 {
+            background-color: #444;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .box {
+            background-color: #444;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 60vh; /* 60% of the viewport height */
+            border: none;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo"><a href="index.html">SURVE</a></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="donation_centers.html">Donation Centers</a></li>
+                <li><a href="food_quality.html">Check Food Quality</a></li>
+                <li><a href="fifth.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Donation Centers -->
+    <section>
+        <div class="box1">
+            <h2>DONATE YOUR FOOD HERE</h2>
+            <p>Different food donation centers based on your Location in India</p>
+        </div>
+        
+        <div class="box" id="east">
+            <h2>EAST</h2>
+            <h3>FOOD ATM</h3>
+            <p>Contact: 098308 78727<br>Address: Ladies Park, CIT Rd, Beniapukur, Kolkata, West Bengal 700014</p>
+            <iframe id="east1" ></iframe>
+            
+            <h3>Goonj Food Dropping Centre</h3>
+            <p>Contact: 098301 30715<br>Address: 603/1B, New Alipore Rd, Block O, New Alipore, Kolkata, West Bengal 700053</p>
+            <iframe id="east2"></iframe>
+            
+            <h3>KASHI ANNAPURNA ANNEKSHETRA TRUST</h3>
+            <p>Contact: 0542 240 2253<br>Address: 9/1, Vishwanath Galli, Near Annapurna Mandir, Godowlia, Varanasi, Uttar Pradesh 221001</p>
+            <iframe id="east3"></iframe>
+        </div>
+        
+        <div class="box" id="north">
+            <h2>NORTH</h2>
+            <h3>DELHI GURGAON NCR FOOD BANK</h3>
+            <p>Contact: 085859 95995<br>Address: C2/2200, C2 Vasant Kunj, Pocket 2, Sector C, Vasant Kunj, New Delhi, Delhi 110070</p>
+            <iframe id="north1"></iframe>
+            
+            <h3>AWB FOOD BANK</h3>
+            <p>Address: 12/5 Sarvapriyavihar, Block 12, Sarvapriya Vihar, NewDelhi, Delhi 110016</p>
+            <iframe id="north2"></iframe>
+        </div>
+        
+        <div class="box" id="west">
+            <h2>WEST</h2>
+            <h3>AKSHAYA PATRA FOUNDATION</h3>
+            <p>Contact: 0141 307 3333<br>Address: C-6 – C 11, Mahal Yogna, Goner Rd, Sector 26, Pratap Nagar, Mahal Scheme, Jaipur, Rajasthan 302033</p>
+            <iframe id="west1"></iframe>
+
+            <h3>RAHUL FOUNDATION</h3>
+            <p>Contact: 093251 66176<br>Address: 15, Old Motor Stand, Ganeshpeth, Nagpur, Maharashtra 440018</p>
+            <iframe id="west2"></iframe>
+        </div>
+    </section>
+
+    <script>
+        // Function to get user's location
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Function to handle location fetch success
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            getState(lat, lon);
+        }
+
+        // Function to handle location fetch error
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
+        }
+
+        // Function to get state from latitude and longitude
+        function getState(lat, lon) {
+            var geocoder = new google.maps.Geocoder();
+            var latlng = new google.maps.LatLng(lat, lon);
+            geocoder.geocode({'latLng': latlng}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        var addressComponents = results[0].address_components;
+                        for (var i = 0; i < addressComponents.length; i++) {
+                            var component = addressComponents[i];
+                            if (component.types.includes("administrative_area_level_1")) {
+                                var state = component.short_name;
+                                updateIframeSrc(state);
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    alert("Geocoder failed due to: " + status);
+                }
+            });
+        }
+
+        // Function to update iframe src based on state
+        function updateIframeSrc(state) {
+            var iframeSrcs = {
+                "West Bengal": {
+                    "east1": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29482.85579962543!2d88.33615983037069!3d22.528296703143067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277938e54e481%3A0xf93c736ed8c6cc41!2sFood%20ATM%20(Hunger%20Free%20Kolkata)!5e0!3m2!1sen!2sin!4v1570002973460!5m2!1sen!2sin",
+                    "east2": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29482.85580029629!2d88.3361598!3d22.5282967!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0270b093f33fb1%3A0x450b77e109e20915!2sGoonj%20Dropping%20Centre!5e0!3m2!1sen!2sin!4v1570004212390!5m2!1sen!2sin"
+                },
+                "Uttar Pradesh": {
+                    "east3": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.246080264891!2d83.006786315033!3d25.30720098384944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd5b75f2eaa7%3A0xf0b648d88b4ecbf1!2sKashi%20Annapurna%20Annakshetra%20Trust!5e0!3m2!1sen!2sin!4v1623157663916!5m2!1sen!2sin"
+                },
+                "Delhi": {
+                    "north1": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112088.88075734263!2d77.11687674861832!3d28.60645031780512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1c2d3d1feb03%3A0xf440c65cdc27b24d!2sDelhi%20Gurgaon%20NCR%20FoodBank%2C%20India!5e0!3m2!1sen!2sin!4v1570005375250!5m2!1sen!2sin",
+                    "north2": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112226.08461269086!2d77.11687657486912!3d28.477584726555325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2bbe6b2dac7291e!2sAWB%20Food%20Bank!5e0!3m2!1sen!2sin!4v1570005930951!5m2!1sen!2sin"
+                },
+                "Rajasthan": {
+                    "west1": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.1781419892067!2d75.78931461502035!3d26.86399308315232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5850a168b15%3A0xa8c730b9671bc27d!2sAkshaya%20Patra%20Foundation!5e0!3m2!1sen!2sin!4v1623157793694!5m2!1sen!2sin"
+                },
+                "Maharashtra": {
+                    "west2": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.720431494107!2d79.08725051503288!3d21.141052985933436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c1d633bb1dd1%3A0xe0b83f58c0a26e19!2sRahul%20Foundation!5e0!3m2!1sen!2sin!4v1623157894374!5m2!1sen!2sin"
+                }
+            };
+
+            var iframes = iframeSrcs[state];
+            if (iframes) {
+                for (var id in iframes) {
+                    document.getElementById(id).src = iframes[id];
+                }
+            } else {
+                alert("Donation centers not available for your location.");
+            }
+        }
+
+        // Load the user's location on page load
+        window.onload = getLocation;
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+</html>
